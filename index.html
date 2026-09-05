@@ -6,380 +6,51 @@
 <link rel="manifest" href="manifest.json">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="FWW GED">
 <meta name="theme-color" content="#8a6d3b">
-<title>FWW GED Digital Packet</title>
+<title>FWW GED Digital Packet — Sessions</title>
 <style>
   :root { color-scheme: light; }
   * { box-sizing: border-box; }
   body { margin:0; background:#F7F6F3; color:#222; font-family: Georgia, 'Times New Roman', serif; font-size:16px; line-height:1.5; }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 18px 16px 60px 16px; }
-  h1 { font-size: 1.4em; margin: 0 0 4px 0; }
-  h2 { font-size: 1.15em; margin: 0 0 8px 0; color:#333; }
-  .badge { display:inline-block; background:#EFE7DA; border:1px solid #C9B896; color:#5c4a25; font-size:0.75em; padding:2px 8px; border-radius:10px; margin-bottom:8px; font-family: -apple-system, sans-serif; }
-  .card { background:#fff; border:1px solid #E0DCD3; border-radius:10px; padding:16px 18px; margin:14px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-  .cover-quote { font-style: italic; font-size:1.15em; border-left:4px solid #8a6d3b; padding:8px 14px; margin:10px 0; background:#FBF8F2; }
-  .overview li { margin-bottom:4px; }
-  button { font-family: -apple-system, sans-serif; font-weight:600; border:none; border-radius:8px; padding:12px 20px; font-size:1em; cursor:pointer; }
-  .btn-primary { background:#8a6d3b; color:#fff; }
-  .btn-primary:disabled { background:#c8bda3; cursor:not-allowed; }
-  .btn-secondary { background:#EFEDE8; color:#333; border:1px solid #D6D2C7; }
-  .btn-row { display:flex; gap:10px; justify-content:space-between; margin-top:18px; flex-wrap:wrap; }
-  .progress-bar { height:6px; background:#E5E1D8; border-radius:3px; overflow:hidden; margin: 10px 0 4px 0; }
-  .progress-fill { height:100%; background:#8a6d3b; transition: width 0.3s; }
-  .meta-row { display:flex; justify-content:space-between; align-items:center; font-family:-apple-system, sans-serif; font-size:0.8em; color:#777; margin-bottom:6px; }
-  .stopwatch { font-variant-numeric: tabular-nums; }
-  .qnum { font-weight:700; color:#8a6d3b; }
-  textarea { width:100%; border:1px solid #CFC9BB; border-radius:6px; padding:10px; font-family: Georgia, serif; font-size:1em; resize:vertical; margin-top:6px; }
-  .choice { display:block; padding:10px 12px; margin:6px 0; border:1px solid #D6D2C7; border-radius:8px; cursor:pointer; background:#fff; }
-  .choice:active { background:#F3F0E9; }
-  .choice.selected-correct { background:#E7F3E5; border-color:#7bab74; }
-  .choice.selected-wrong { background:#FBE9E7; border-color:#d98f85; }
-  .choice.reveal-correct { border-color:#7bab74; }
-  .feedback { font-family:-apple-system, sans-serif; font-size:0.9em; margin-top:6px; padding:8px 10px; border-radius:6px; }
-  .feedback.correct { background:#E7F3E5; color:#2e5c28; }
-  .feedback.wrong { background:#FBE9E7; color:#7a2c22; }
-  .rule-box { background:#F2EFE8; border-left:4px solid #8a6d3b; padding:8px 12px; margin:10px 0; font-size:0.95em; }
-  .warn-box { background:#FBF3E3; border:1px solid #E4C980; padding:10px 12px; margin:12px 0; border-radius:8px; text-align:center; }
-  table { border-collapse:collapse; width:100%; margin:8px 0; font-size:0.9em; }
-  table th, table td { border:1px solid #D6D2C7; padding:6px 8px; text-align:left; }
-  .status-banner { font-family:-apple-system, sans-serif; padding:10px 14px; border-radius:8px; margin:12px 0; font-size:0.9em; }
-  .status-ok { background:#E7F3E5; color:#2e5c28; }
-  .status-err { background:#FBE9E7; color:#7a2c22; }
+  .wrap { max-width: 700px; margin:0 auto; padding: 20px 16px 60px 16px; }
+  h1 { font-size: 1.5em; margin: 0 0 4px 0; }
+  .sub { font-family:-apple-system, sans-serif; color:#777; font-size:0.9em; margin-bottom:18px; }
+  .week-label { font-family:-apple-system, sans-serif; text-transform:uppercase; letter-spacing:0.05em; font-size:0.75em; color:#8a6d3b; font-weight:700; margin:22px 0 8px 0; }
+  a.session-card { display:block; background:#fff; border:1px solid #E0DCD3; border-radius:10px; padding:16px 18px; margin:10px 0; text-decoration:none; color:#222; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  a.session-card:active { background:#F3F0E9; }
+  .session-title { font-weight:700; font-size:1.05em; }
+  .session-sub { font-family:-apple-system, sans-serif; font-size:0.82em; color:#777; margin-top:3px; }
   .offline-pill { position:fixed; top:8px; right:8px; background:#333; color:#fff; font-family:-apple-system,sans-serif; font-size:0.7em; padding:3px 8px; border-radius:10px; opacity:0.85; }
   .hidden { display:none; }
-  a.filelink { color:#8a6d3b; }
 </style>
 </head>
 <body>
 <div id="offline-pill" class="offline-pill hidden">Offline — still works</div>
-<div class="wrap" id="app"></div>
+<div class="wrap">
+  <h1>FWW GED Digital Packet</h1>
+  <div class="sub">Tap a session below to begin. Once opened while online, each session keeps working with no connection.</div>
 
+  <div class="week-label">Week 25 &middot; Sunday, September 6, 2026</div>
+  <a class="session-card" href="player.html?content=week25_sun_am_review">
+    <div class="session-title">Morning &mdash; Comprehensive Review</div>
+    <div class="session-sub">Weeks 21&ndash;24 recap: featured women, grammar, math, Japanese &amp; reading</div>
+  </a>
+  <a class="session-card" href="player.html?content=week25_sun_pm_day1">
+    <div class="session-title">Afternoon &mdash; Week 25, Day 1</div>
+    <div class="session-sub">Mary McLeod Bethune &middot; new material begins</div>
+  </a>
+</div>
 <script>
 if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("sw.js").catch(() => {});
-  });
+  window.addEventListener("load", () => { navigator.serviceWorker.register("sw.js").catch(() => {}); });
 }
 function updateOfflinePill() {
   document.getElementById("offline-pill").classList.toggle("hidden", navigator.onLine);
 }
 window.addEventListener("online", updateOfflinePill);
 window.addEventListener("offline", updateOfflinePill);
-
-const CONTENT = {
-  "meta": {
-    "date_display": "Saturday, September 5, 2026",
-    "week": 24,
-    "day_name": "Saturday — Week 24 Quiz",
-    "student_pdf": "Week24_Sat_Sep5_Quiz_FWW.pdf",
-    "key_pdf": "Week24_Sat_Sep5_Quiz_FWW_ANSWERKEY.pdf"
-  },
-  "cover": {
-    "woman_name": "Week 24 Synthesis Quiz",
-    "woman_dates": "Leymah Gbowee &middot; Claudette Colvin &middot; Maryse Cond&eacute; &middot; Yaa Asantewaa &middot; Hatshepsut &middot; Nikki Giovanni",
-    "woman_country": "Liberia &middot; USA &middot; Guadeloupe/France &middot; Ghana &middot; Egypt &middot; USA",
-    "woman_bio": "This is a shorter half-day quiz covering everything from this week: the six featured women, the Japanese proverbs, math skills, grammar rules (run-ons and fragments), and your Lady Sings the Blues reading. Work carefully — no new material today, just review and demonstration of what you've learned.",
-    "quote": "It is the response to error that counts.",
-    "quote_source": "Nikki Giovanni — this week's closing theme",
-    "pomodoro_overview": [
-      "P0 &middot; Daily Check-In &middot; 5 min",
-      "P1 &middot; Quiz: This Week's Women &amp; History &middot; 20 min",
-      "P2 &middot; Quiz: Math Review &middot; 20 min",
-      "P3 &middot; Quiz: Grammar — Run-Ons &amp; Fragments &middot; 20 min",
-      "P4 &middot; Quiz: Japanese Proverbs &amp; Lady Sings the Blues &middot; 20 min",
-      "P5 &middot; Weekly Reflection &amp; Micro-Journal &middot; 15 min"
-    ]
-  },
-  "pomodoros": [
-    {
-      "number": 0, "subject": "Daily Check-In", "timer": "5 minutes",
-      "content": [
-        { "type": "rule", "content": "<strong>Quick check-in before you begin — not graded, just information for you and your supervisor.</strong>" },
-        { "type": "question_open", "number": 1, "question": "What time are you starting your work right now?", "lines": 1, "answer": "Student's own answer." },
-        { "type": "question_open", "number": 2, "question": "On a scale of 1-5, how ready do you feel for today's quiz? (1 = not at all, 5 = very ready)", "lines": 1, "answer": "Student's own answer." }
-      ]
-    },
-    {
-      "number": 1, "subject": "Quiz: This Week's Women &amp; History", "timer": "20 minutes",
-      "content": [
-        { "type": "question_mc", "number": 1, "question": "Leymah Gbowee is best known for leading a movement of women to accomplish what?", "choices": ["A) Winning an Olympic medal", "B) Helping end Liberia's second civil war through nonviolent protest", "C) Becoming the first female airline pilot in Africa", "D) Founding a national university"], "answer": "B) Helping end Liberia's second civil war through nonviolent protest." },
-        { "type": "question_mc", "number": 2, "question": "Claudette Colvin refused to give up her bus seat in Montgomery, Alabama in what year — months before Rosa Parks' more widely known refusal?", "choices": ["A) 1945", "B) 1955", "C) 1965", "D) 1975"], "answer": "B) 1955." },
-        { "type": "question_mc", "number": 3, "question": "Maryse Cond&eacute; was a celebrated writer from which region?", "choices": ["A) Southeast Asia", "B) Guadeloupe (Caribbean/France)", "C) Scandinavia", "D) Central America"], "answer": "B) Guadeloupe (Caribbean/France)." },
-        { "type": "question_mc", "number": 4, "question": "Yaa Asantewaa led resistance against British colonial forces as Queen Mother of which people?", "choices": ["A) The Zulu", "B) The Ashanti (Asante)", "C) The Maasai", "D) The Yoruba"], "answer": "B) The Ashanti (Asante)." },
-        { "type": "question_mc", "number": 5, "question": "Hatshepsut ruled ancient Egypt as one of very few women to hold which title in her own right?", "choices": ["A) Vizier", "B) High Priestess only", "C) Pharaoh", "D) General of the Army only"], "answer": "C) Pharaoh." },
-        { "type": "question_mc", "number": 6, "question": "Nikki Giovanni was most closely associated with which artistic/cultural movement?", "choices": ["A) The Black Arts Movement", "B) The Beat Generation", "C) Dadaism", "D) The Bauhaus movement"], "answer": "A) The Black Arts Movement." },
-        { "type": "question_open", "number": 7, "question": "Choose ONE woman from this week (other than one you already wrote about earlier this week). In 3-4 sentences, explain what she did and why it mattered.", "lines": 6, "answer": "Answers will vary — check for accurate, specific content matching that day's packet." }
-      ]
-    },
-    {
-      "number": 2, "subject": "Quiz: Math Review", "timer": "20 minutes",
-      "content": [
-        { "type": "question_open", "number": 1, "question": "Convert 36/48 to a percentage. Show all steps.", "lines": 4, "answer": "36&divide;48=0.75&times;100=<strong>75%</strong>" },
-        { "type": "question_open", "number": 2, "question": "A student answers 42 out of 50 quiz questions correctly. What percentage is that? Show all steps.", "lines": 4, "answer": "42&divide;50=0.84&times;100=<strong>84%</strong>" },
-        { "type": "question_open", "number": 3, "question": "This week you completed 6 out of 6 scheduled days (Sun through Fri, plus this quiz). What percentage of the week's total 7 planned sessions have you now completed, counting this quiz?", "lines": 3, "answer": "7&divide;7=1.0&times;100=<strong>100%</strong>" },
-        { "type": "question_mc", "number": 4, "question": "Which of these fractions is LARGEST?", "choices": ["A) 3/5", "B) 5/8", "C) 7/10", "D) 4/6"], "answer": "C) 7/10 = 70%, which is larger than 3/5 (60%), 5/8 (62.5%), and 4/6 (66.7%)." },
-        { "type": "question_open", "number": 5, "question": "A recipe/dosage/mixture problem: if a solution is 25% concentrate and you have 80 mL total, how many mL are concentrate? Show your working.", "lines": 3, "answer": "80&times;0.25=<strong>20 mL</strong>" }
-      ]
-    },
-    {
-      "number": 3, "subject": "Quiz: Grammar — Run-Ons &amp; Fragments", "timer": "20 minutes",
-      "content": [
-        { "type": "question_mc", "number": 1, "question": "Which of these is a run-on sentence?", "choices": ["A) Although she was tired, she finished her work.", "B) She was tired she finished her work anyway.", "C) She was tired, but she finished her work anyway.", "D) Because she was tired."], "answer": "B) She was tired she finished her work anyway. (two complete sentences with no punctuation or conjunction between them)" },
-        { "type": "question_mc", "number": 2, "question": "Which of these is a sentence fragment?", "choices": ["A) When the quiz is finished.", "B) The quiz is finished.", "C) She finished the quiz, and she checked her work.", "D) The quiz was long, but she finished it."], "answer": "A) When the quiz is finished. (dependent clause with no complete sentence attached)" },
-        { "type": "question_open", "number": 3, "question": "Fix this run-on using a FANBOYS word (for, and, nor, but, or, yet, so): 'The quiz was hard she still finished it on time.'", "lines": 3, "answer": "Sample fix: 'The quiz was hard, but she still finished it on time.'" },
-        { "type": "question_open", "number": 4, "question": "Fix this fragment by attaching it to a complete sentence: 'Because this was the last day of the week.'", "lines": 3, "answer": "Sample fix: 'Because this was the last day of the week, the quiz was shorter than usual.'" },
-        { "type": "question_open", "number": 5, "question": "List the seven FANBOYS coordinating conjunctions from memory.", "lines": 2, "answer": "For, And, Nor, But, Or, Yet, So." },
-        { "type": "question_open", "number": 6, "question": "List FOUR subordinating conjunctions from memory (words that start a dependent clause and can cause a fragment if not attached to a complete sentence).", "lines": 2, "answer": "Any four of: although, because, since, if, when, while, unless, until, after, before, though." },
-        { "type": "question_open", "number": 7, "question": "In 2-3 sentences, explain the difference between a run-on and a fragment in your own words.", "lines": 4, "answer": "Sample answer: A run-on happens when two or more complete sentences are jammed together without correct punctuation or a connecting word. A fragment happens when a group of words is missing something it needs to be complete — often a dependent clause left standing alone without a main clause attached." }
-      ]
-    },
-    {
-      "number": 4, "subject": "Quiz: Japanese Proverbs &amp; Lady Sings the Blues", "timer": "20 minutes",
-      "content": [
-        { "type": "question_open", "number": 1, "question": "Choose ONE Japanese proverb from this week and write it (romaji is fine) along with its English meaning.", "lines": 3, "answer": "Answers will vary — accept any of the five proverbs taught this week with an accurate meaning." },
-        { "type": "question_open", "number": 2, "question": "Explain in 2-3 sentences how that proverb connects to one of the six women studied this week.", "lines": 4, "answer": "Answers will vary — check for a genuine, specific, and reasonable connection." },
-        { "type": "question_open", "number": 3, "question": "How many pages/chapters of Lady Sings the Blues have you read so far in total? Give your best honest estimate.", "lines": 2, "answer": "Student's own honest answer." },
-        { "type": "question_open", "number": 4, "question": "In 3-4 sentences, summarize the most important thing that has happened in the book so far.", "lines": 5, "answer": "Answers will vary based on actual reading progress — check for a genuine, specific summary." }
-      ]
-    },
-    {
-      "number": 5, "subject": "Weekly Reflection &amp; Micro-Journal", "timer": "15 minutes",
-      "content": [
-        { "type": "rule", "content": "<strong>End-of-week reflection.</strong> Be honest — this is for you, not for grading." },
-        { "type": "question_open", "number": 1, "question": "What is ONE thing you understand better this week than you did last week?", "lines": 3, "answer": "Student's own answer." },
-        { "type": "question_open", "number": 2, "question": "What is ONE thing that was still hard for you this week?", "lines": 3, "answer": "Student's own answer." },
-        { "type": "question_open", "number": 3, "question": "What time of day did most of your work get done this week? Is that the time when you do your best work, or would a different time work better?", "lines": 3, "answer": "Student's own answer." },
-        { "type": "rule", "content": "<strong>Mindfulness Micro-Journal — mood &amp; feelings.</strong>" },
-        { "type": "question_open", "number": 4, "question": "One sensation I notice right now:", "lines": 2, "answer": "Student's own answer." },
-        { "type": "question_open", "number": 5, "question": "One thought I can let pass:", "lines": 2, "answer": "Student's own answer." },
-        { "type": "question_open", "number": 6, "question": "One thing that feels steady today:", "lines": 2, "answer": "Student's own answer." },
-        { "type": "warn", "content": "&#127775; Week 24 complete. Nikki Giovanni: &ldquo;It is the response to error that counts.&rdquo; See you next week." }
-      ]
-    }
-  ]
-};
-
-const STORAGE_KEY = "fww_pilot_" + CONTENT.meta.student_pdf;
-
-let state = {
-  step: -1,
-  answers: {},
-  pomStart: null,
-  pomElapsed: {},
-  overallStart: null,
-  submitted: false
-};
-
-function loadState() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) { const saved = JSON.parse(raw); state = Object.assign(state, saved); }
-  } catch(e) {}
-}
-function saveState() {
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
-}
-
-function renderBlock(pom, block, idx) {
-  switch(block.type) {
-    case "rule":
-      return `<div class="rule-box">${block.content}</div>`;
-    case "warn":
-      return `<div class="warn-box">${block.content}</div>`;
-    case "text":
-    case "html":
-    case "speech":
-      return `<div style="margin:8px 0;">${block.content}</div>`;
-    case "prompt":
-      return `<div class="rule-box">${block.content}</div>`;
-    case "key_only":
-    case "br20":
-    case "lines":
-      return "";
-    case "list":
-      return `<ul>${(block.items||[]).map(i=>`<li>${i}</li>`).join("")}</ul>`;
-    case "question_mc": {
-      const key = `p${pom.number}_q${block.number}`;
-      const saved = state.answers[key];
-      const correctLetter = (block.answer.match(/^([A-D])\)/) || [])[1];
-      let html = `<div class="card"><div><span class="qnum">Q${block.number}.</span> ${block.question}</div>`;
-      block.choices.forEach(choice => {
-        const letter = (choice.match(/^([A-D])\)/) || [])[1];
-        let cls = "choice";
-        if (saved) {
-          if (letter === saved.choice && letter === correctLetter) cls += " selected-correct";
-          else if (letter === saved.choice && letter !== correctLetter) cls += " selected-wrong";
-          else if (letter === correctLetter) cls += " reveal-correct";
-        }
-        html += `<div class="${cls}" onclick="selectMC('${key}','${letter}','${correctLetter}',${pom.number})">${choice}</div>`;
-      });
-      if (saved) {
-        const isCorrect = saved.choice === correctLetter;
-        html += `<div class="feedback ${isCorrect ? 'correct' : 'wrong'}">${isCorrect ? '&#10003; Correct.' : '&#10007; Not quite.'} ${block.answer}</div>`;
-      }
-      html += `</div>`;
-      return html;
-    }
-    case "question_open": {
-      const key = `p${pom.number}_q${block.number}`;
-      const saved = state.answers[key] || "";
-      const rows = Math.max(2, Math.min(8, block.lines || 3));
-      return `<div class="card"><div><span class="qnum">Q${block.number}.</span> ${block.question}</div>
-        <textarea rows="${rows}" oninput="saveOpen('${key}', this.value)" placeholder="Type your answer here...">${escapeHtml(saved)}</textarea></div>`;
-    }
-    default:
-      return "";
-  }
-}
-
-function escapeHtml(s) { return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
-
-function selectMC(key, letter, correctLetter, pomNum) {
-  state.answers[key] = { choice: letter, correct: correctLetter, isCorrect: letter === correctLetter };
-  saveState();
-  renderApp();
-}
-function saveOpen(key, value) {
-  state.answers[key] = value;
-  saveState();
-}
-
-function fmtTime(sec) {
-  const m = Math.floor(sec/60), s = sec%60;
-  return `${m}:${String(s).padStart(2,'0')}`;
-}
-
-let tickInterval = null;
-function startTicker() {
-  if (tickInterval) clearInterval(tickInterval);
-  tickInterval = setInterval(() => {
-    const el = document.getElementById('stopwatch');
-    if (el && state.pomStart) {
-      const elapsed = Math.floor((Date.now() - state.pomStart)/1000) + (state.pomElapsed[state.step] || 0);
-      el.textContent = fmtTime(elapsed);
-    }
-  }, 1000);
-}
-
-function goToStep(n) {
-  if (state.step >= 0 && state.pomStart) {
-    const elapsed = Math.floor((Date.now() - state.pomStart)/1000);
-    state.pomElapsed[state.step] = (state.pomElapsed[state.step] || 0) + elapsed;
-  }
-  state.step = n;
-  state.pomStart = Date.now();
-  saveState();
-  renderApp();
-  startTicker();
-  window.scrollTo(0,0);
-}
-
-function beginQuiz() {
-  state.overallStart = state.overallStart || Date.now();
-  goToStep(0);
-}
-
-async function submitWork() {
-  if (state.pomStart) {
-    const elapsed = Math.floor((Date.now() - state.pomStart)/1000);
-    state.pomElapsed[state.step] = (state.pomElapsed[state.step] || 0) + elapsed;
-  }
-  const results = {
-    student: "Fatimah Widad Williams",
-    meta: CONTENT.meta,
-    submitted_at: new Date().toISOString(),
-    total_elapsed_seconds: Object.values(state.pomElapsed).reduce((a,b)=>a+b,0),
-    pomodoros: CONTENT.pomodoros.map(pom => ({
-      number: pom.number,
-      subject: pom.subject,
-      elapsed_seconds: state.pomElapsed[pom.number] || 0,
-      questions: pom.content.filter(b => b.type === "question_mc" || b.type === "question_open").map(b => {
-        const key = `p${pom.number}_q${b.number}`;
-        const saved = state.answers[key];
-        if (b.type === "question_mc") {
-          return { number: b.number, type: "mc", question: b.question, student_choice: saved ? saved.choice : null, correct_choice: (b.answer.match(/^([A-D])\)/)||[])[1], is_correct: saved ? saved.isCorrect : null };
-        }
-        return { number: b.number, type: "open", question: b.question, student_answer: saved || "" };
-      })
-    }))
-  };
-
-  state.submitted = true;
-  saveState();
-
-  const filename = `${CONTENT.meta.student_pdf.replace('.pdf','')}_DIGITAL_RESULTS.json`;
-  const jsonStr = JSON.stringify(results, null, 2);
-  const statusEl = document.getElementById('submit-status');
-
-  statusEl.innerHTML = `<div class="status-banner status-err">Tap "Download My Results" below, then use the Share icon to save it into Box (Digital Packet Submissions folder), or AirDrop/email it home. If you're offline right now, the file still saves to this device — just share it to Box next time you have a connection.</div>`;
-  offerDownload(filename, jsonStr);
-  renderApp();
-}
-
-function offerDownload(filename, jsonStr) {
-  window._pendingDownload = { filename, jsonStr };
-}
-function doDownload() {
-  const { filename, jsonStr } = window._pendingDownload || {};
-  if (!jsonStr) return;
-  const blob = new Blob([jsonStr], {type: "application/json"});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = filename;
-  document.body.appendChild(a); a.click(); document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-}
-
-function renderApp() {
-  const app = document.getElementById('app');
-  const total = CONTENT.pomodoros.length;
-
-  if (state.step === -1) {
-    app.innerHTML = `
-      <span class="badge">PILOT &middot; installable, works offline</span>
-      <h1>${CONTENT.meta.day_name}</h1>
-      <div class="meta-row"><span>${CONTENT.meta.date_display}</span><span>Week ${CONTENT.meta.week}</span></div>
-      <div class="card">
-        <h2>${CONTENT.cover.woman_name}</h2>
-        <div style="font-size:0.85em; color:#777; font-family:-apple-system,sans-serif;">${CONTENT.cover.woman_country}</div>
-        <p>${CONTENT.cover.woman_bio}</p>
-        <div class="cover-quote">&ldquo;${CONTENT.cover.quote}&rdquo;<br><span style="font-size:0.7em; font-style:normal; color:#777;">— ${CONTENT.cover.quote_source}</span></div>
-        <div style="font-family:-apple-system, sans-serif; font-size:0.9em;"><strong>Today's plan:</strong>
-          <ul class="overview">${CONTENT.cover.pomodoro_overview.map(o=>`<li>${o}</li>`).join("")}</ul>
-        </div>
-      </div>
-      <div class="btn-row"><button class="btn-primary" onclick="beginQuiz()">Begin &#8594;</button></div>
-    `;
-    updateOfflinePill();
-    return;
-  }
-
-  const pom = CONTENT.pomodoros[state.step];
-  const doneCount = state.step;
-  app.innerHTML = `
-    <div class="meta-row"><span>Pomodoro ${state.step+1} of ${total}</span><span class="stopwatch" id="stopwatch">0:00</span></div>
-    <div class="progress-bar"><div class="progress-fill" style="width:${Math.round((doneCount/total)*100)}%"></div></div>
-    <h2>${pom.subject} <span style="font-weight:400; font-size:0.7em; color:#999;">(${pom.timer})</span></h2>
-    ${pom.content.map((b,i)=>renderBlock(pom,b,i)).join("")}
-    <div id="submit-status"></div>
-    <div class="btn-row">
-      <button class="btn-secondary" onclick="goToStep(${state.step-1})" ${state.step===0?'disabled':''}>&#8592; Back</button>
-      ${state.step < total-1
-        ? `<button class="btn-primary" onclick="goToStep(${state.step+1})">Next &#8594;</button>`
-        : state.submitted
-          ? `<button class="btn-secondary" onclick="doDownload()">Download Backup Copy</button>`
-          : `<button class="btn-primary" onclick="submitWork()">Finish &amp; Submit &#10003;</button>`
-      }
-    </div>
-  `;
-  updateOfflinePill();
-}
-
-loadState();
-renderApp();
-if (state.step >= 0) startTicker();
+updateOfflinePill();
 </script>
 </body>
 </html>
