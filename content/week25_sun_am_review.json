@@ -1,0 +1,103 @@
+{
+  "meta": {
+    "date_display": "Sunday, September 6, 2026 — Morning Session",
+    "week": 25,
+    "day_name": "Sunday AM — Comprehensive Review (Weeks 21–24)",
+    "student_pdf": "Week25_Sun_Sep6_AM_Review_FWW.pdf",
+    "key_pdf": "Week25_Sun_Sep6_AM_Review_FWW_ANSWERKEY.pdf"
+  },
+  "cover": {
+    "woman_name": "Comprehensive Review — Weeks 21–24",
+    "woman_dates": "Aug 11 – Sep 5, 2026",
+    "woman_country": "Liberia · USA · Guadeloupe · Ghana · Egypt · South Africa · Nigeria · and more",
+    "woman_bio": "This morning is a review, not new material — a chance to check what has stuck from the last month before starting fresh this week. It covers the women you studied, the Japanese material, grammar rules, math skills, and your independent reading. Take your time and think back through everything from the last few weeks.",
+    "quote": "It is the response to error that counts.",
+    "quote_source": "Nikki Giovanni — last week's closing theme, worth carrying forward",
+    "pomodoro_overview": [
+      "P0 &middot; Daily Check-In &middot; 5 min",
+      "P1 &middot; Featured Women Recall — Weeks 21&ndash;24 &middot; 25 min",
+      "P2 &middot; Grammar Cumulative Review — Run-Ons &amp; Fragments &middot; 25 min",
+      "P3 &middot; Math Cumulative Review &middot; 25 min",
+      "P4 &middot; Japanese Proverbs, Zatoichi &amp; Lady Sings the Blues Check-In &middot; 25 min",
+      "P5 &middot; GED Science &amp; Civics Cumulative Review &middot; 25 min",
+      "P6 &middot; Mindfulness Micro-Journal &middot; 10 min"
+    ]
+  },
+  "pomodoros": [
+    {
+      "number": 0, "subject": "Daily Check-In", "timer": "5 minutes",
+      "content": [
+        { "type": "rule", "content": "<strong>Quick check-in before you begin — not graded, just information for you and your supervisor.</strong>" },
+        { "type": "question_open", "number": 1, "question": "What time are you starting your work right now?", "lines": 1, "answer": "Student's own answer." },
+        { "type": "question_open", "number": 2, "question": "In one sentence, what do you remember most clearly from the last few weeks of work?", "lines": 2, "answer": "Student's own answer." }
+      ]
+    },
+    {
+      "number": 1, "subject": "Featured Women Recall — Weeks 21–24", "timer": "25 minutes",
+      "content": [
+        { "type": "rule", "content": "<strong>Instructions:</strong> Match or recall from memory first. It's fine if you don't remember everything — that's what this review is for." },
+        { "type": "question_open", "number": 1, "question": "Name THREE women you studied over the last month and, for each, write one sentence about what she is known for. (Some choices: Octavia Butler, Shirley Chisholm, Harriet Tubman, Ella Baker, Zora Neale Hurston, Alice Walker, Lorraine Hansberry, Nina Simone, Billie Holiday, Miriam Makeba, Winnie Madikizela-Mandela, Rosa Parks, Ellen Johnson Sirleaf, Ama Ata Aidoo, Chimamanda Ngozi Adichie, Leymah Gbowee, Claudette Colvin, Maryse Cond&eacute;, Yaa Asantewaa, Hatshepsut, Nikki Giovanni.)", "lines": 6, "answer": "Answers will vary — check for three accurate, specific facts matching the actual content taught." },
+        { "type": "question_mc", "number": 2, "question": "Which of these women was a science fiction author known for the line, &ldquo;All that you touch, you change&rdquo;?", "choices": ["A) Nina Simone", "B) Octavia Butler", "C) Rosa Parks", "D) Hatshepsut"], "answer": "B) Octavia Butler." },
+        { "type": "question_mc", "number": 3, "question": "Which woman refused to give up her Montgomery bus seat MONTHS before Rosa Parks' more widely known refusal?", "choices": ["A) Ella Baker", "B) Claudette Colvin", "C) Winnie Madikizela-Mandela", "D) Yaa Asantewaa"], "answer": "B) Claudette Colvin." },
+        { "type": "question_mc", "number": 4, "question": "Which woman helped lead the movement of Liberian women that helped end that country's second civil war?", "choices": ["A) Leymah Gbowee", "B) Ellen Johnson Sirleaf", "C) Miriam Makeba", "D) Maryse Cond&eacute;"], "answer": "A) Leymah Gbowee. (Note: Ellen Johnson Sirleaf, also studied this month, later became Liberia's president — the two are connected but distinct.)" },
+        { "type": "question_open", "number": 5, "question": "Of all the women studied this past month, which one's story affected you the most, and why? (2-3 sentences)", "lines": 4, "answer": "Student's own reflective answer." }
+      ]
+    },
+    {
+      "number": 2, "subject": "Grammar Cumulative Review — Run-Ons &amp; Fragments", "timer": "25 minutes",
+      "content": [
+        { "type": "rule", "content": "<strong>Everything you've practiced the last few weeks, together in one place.</strong>" },
+        { "type": "question_open", "number": 1, "question": "List the seven FANBOYS coordinating conjunctions from memory.", "lines": 2, "answer": "For, And, Nor, But, Or, Yet, So." },
+        { "type": "question_open", "number": 2, "question": "List SIX subordinating conjunctions from memory.", "lines": 2, "answer": "Any six of: although, because, since, if, when, while, unless, until, after, before, though." },
+        { "type": "question_open", "number": 3, "question": "Fix this run-on: 'The review felt long she kept working anyway.'", "lines": 2, "answer": "Sample fix: 'The review felt long, but she kept working anyway.'" },
+        { "type": "question_open", "number": 4, "question": "Fix this fragment: 'Because it has been almost a month since some of this material was new.'", "lines": 2, "answer": "Sample fix: 'Because it has been almost a month since some of this material was new, a review makes sense.'" },
+        { "type": "question_open", "number": 5, "question": "Write your own sentence using 'yet' correctly.", "lines": 2, "answer": "Answers will vary — check for two complete clauses joined by comma + yet." },
+        { "type": "question_open", "number": 6, "question": "Write your own sentence using 'although' to start a dependent clause.", "lines": 2, "answer": "Answers will vary — check for a correctly punctuated dependent clause + complete sentence." },
+        { "type": "question_open", "number": 7, "question": "Find ONE sentence from your answer to Question 1 in the Featured Women Recall section above. Copy it, then diagnose it: is it a run-on, a fragment, or correct? Fix it if needed.", "lines": 5, "answer": "Answers will vary — check for accurate self-diagnosis and correct fix if one was needed." },
+        { "type": "question_open", "number": 8, "question": "In 2-3 sentences: what is the ONE run-on or fragment habit you still catch yourself doing most often?", "lines": 3, "answer": "Student's own honest reflective answer." }
+      ]
+    },
+    {
+      "number": 3, "subject": "Math Cumulative Review", "timer": "25 minutes",
+      "content": [
+        { "type": "rule", "content": "<strong>Percent conversion and multi-step problems — show every step.</strong> percentage = (part &divide; whole) &times; 100." },
+        { "type": "question_open", "number": 1, "question": "Convert 18/24 to a percentage. Show all steps.", "lines": 4, "answer": "18&divide;24=0.75&times;100=<strong>75%</strong>" },
+        { "type": "question_open", "number": 2, "question": "Convert 27/45 to a percentage. Show all steps.", "lines": 4, "answer": "27&divide;45=0.6&times;100=<strong>60%</strong>" },
+        { "type": "question_open", "number": 3, "question": "Over Weeks 21–24 you completed classwork on 21 out of 24 scheduled days. What percentage is that? Show your working, rounded to the nearest whole percent.", "lines": 4, "answer": "21&divide;24=0.875&times;100 &asymp; <strong>88%</strong> (exact answer depends on actual completion — accept correct method even if the real count differs)." },
+        { "type": "question_mc", "number": 4, "question": "Which fraction is equivalent to 60%?", "choices": ["A) 27/45", "B) 18/24", "C) 5/6", "D) 7/8"], "answer": "A) 27/45 (matches question 2)." },
+        { "type": "question_open", "number": 5, "question": "A mixture problem: a solution is 40% concentrate. If you have 60 mL total, how many mL are concentrate? Show your working.", "lines": 3, "answer": "60&times;0.40=<strong>24 mL</strong>" },
+        { "type": "question_open", "number": 6, "question": "A GED practice section has 40 questions. If you need to answer 70% correctly to pass, how many questions is that? Show your working.", "lines": 3, "answer": "40&times;0.70=<strong>28 questions</strong>" }
+      ]
+    },
+    {
+      "number": 4, "subject": "Japanese Proverbs, Zatoichi &amp; Lady Sings the Blues Check-In", "timer": "25 minutes",
+      "content": [
+        { "type": "rule", "content": "<strong>Bringing together the Japanese material and your independent reading from the last month.</strong>" },
+        { "type": "question_open", "number": 1, "question": "Write one Japanese proverb you learned this month (romaji is fine) along with its English meaning.", "lines": 3, "answer": "Answers will vary — accept any proverb taught in Weeks 24 with an accurate meaning (e.g., Nana korobi ya oki — fall seven times, stand up eight)." },
+        { "type": "question_open", "number": 2, "question": "In 2-3 sentences, what do you remember about Zatoichi (the blind swordsman) and what his story showed about justice, whether official/legal or otherwise?", "lines": 4, "answer": "Answers will vary — check for a genuine, specific recollection connecting to the earlier Zatoichi units (legal vs. extralegal justice, his skill despite disability, his moral code)." },
+        { "type": "question_open", "number": 3, "question": "How many total pages/chapters of Lady Sings the Blues have you read so far? Give your best honest estimate.", "lines": 2, "answer": "Student's own honest answer." },
+        { "type": "question_open", "number": 4, "question": "In 4-5 sentences, summarize the story of Lady Sings the Blues so far — what has happened, and what do you think will happen next?", "lines": 6, "answer": "Answers will vary based on actual reading progress — check for a genuine, specific summary and a reasonable prediction." }
+      ]
+    },
+    {
+      "number": 5, "subject": "GED Science &amp; Civics Cumulative Review", "timer": "25 minutes",
+      "content": [
+        { "type": "rule", "content": "<strong>Instructions:</strong> Answer every part of each question." },
+        { "type": "question_mc", "number": 1, "question": "The Meta/social-media legal case studied this month (a court ordering a large payout related to a platform's role in a young user's death) is an example of which broader civics concept?", "choices": ["A) Legislative gridlock", "B) Corporate legal accountability through the court system", "C) A constitutional amendment process", "D) International treaty law"], "answer": "B) Corporate legal accountability through the court system." },
+        { "type": "question_mc", "number": 2, "question": "Extended screen time and heavy social media use were studied this month in connection with which body system/organ?", "choices": ["A) The digestive system", "B) The brain and nervous system", "C) The skeletal system", "D) The respiratory system"], "answer": "B) The brain and nervous system." },
+        { "type": "question_open", "number": 3, "question": "Explain in your own words why understanding percentages (like the ones you practiced today) is useful for reading news about court cases, elections, or scientific studies.", "lines": 5, "answer": "Sample answer: News about court judgments, election results, and scientific findings is very often reported using percentages (percentage of votes, percentage increase/decrease in risk, percentage of a settlement). Understanding how to calculate and interpret percentages lets a reader evaluate whether a reported number is actually large or small, and compare it to other numbers, rather than just accepting a headline's framing." },
+        { "type": "question_open", "number": 4, "question": "Choose one topic from this month (a legal case, a scientific finding, or a historical event) and explain briefly why understanding the real facts matters more than just hearing about it secondhand.", "lines": 5, "answer": "Answers will vary — check for a specific example and a reasonable explanation connecting to critical thinking/media literacy." }
+      ]
+    },
+    {
+      "number": 6, "subject": "Mindfulness Micro-Journal", "timer": "10 minutes",
+      "content": [
+        { "type": "rule", "content": "<strong>Wind-down before this afternoon's session.</strong> No right or wrong answers — just notice honestly." },
+        { "type": "question_open", "number": 1, "question": "One sensation I notice right now:", "lines": 2, "answer": "Student's own answer." },
+        { "type": "question_open", "number": 2, "question": "One thought I can let pass:", "lines": 2, "answer": "Student's own answer." },
+        { "type": "question_open", "number": 3, "question": "One thing that feels steady today:", "lines": 2, "answer": "Student's own answer." },
+        { "type": "warn", "content": "&#127775; Morning review complete. Take a real break before this afternoon's session — you've covered a full month of material." }
+      ]
+    }
+  ]
+}
