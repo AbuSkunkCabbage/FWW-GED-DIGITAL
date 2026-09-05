@@ -1,8 +1,10 @@
-// Minimal offline cache for the FWW GED digital packet.
-// Strategy: cache-first for everything in this app, so once loaded once
-// with internet, it keeps working with zero connection until updated.
-const CACHE_NAME = "fww-packet-v1";
-const APP_SHELL = ["./", "./index.html", "./manifest.json"];
+// Offline cache for the FWW GED digital packet.
+// App shell (index.html, player.html, manifest.json) is cached on install.
+// Content files under content/*.json are cached the first time they're
+// fetched, then served from cache thereafter — so once a session has been
+// opened once with internet, it works with zero connection from then on.
+const CACHE_NAME = "fww-packet-v2";
+const APP_SHELL = ["./", "./index.html", "./player.html", "./manifest.json"];
 
 self.addEventListener("install", (event) => {
   self.skipWaiting();
@@ -31,7 +33,7 @@ self.addEventListener("fetch", (event) => {
           }
           return response;
         })
-        .catch(() => cached); // offline: fall back to cache
+        .catch(() => cached); // offline: fall back to whatever is cached
       return cached || networkFetch;
     })
   );
