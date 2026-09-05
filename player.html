@@ -1,0 +1,268 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="FWW GED">
+<meta name="theme-color" content="#8a6d3b">
+<title>FWW GED Digital Packet</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:#F7F6F3; color:#222; font-family: Georgia, 'Times New Roman', serif; font-size:16px; line-height:1.5; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 18px 16px 60px 16px; }
+  h1 { font-size: 1.4em; margin: 0 0 4px 0; }
+  h2 { font-size: 1.15em; margin: 0 0 8px 0; color:#333; }
+  .badge { display:inline-block; background:#EFE7DA; border:1px solid #C9B896; color:#5c4a25; font-size:0.75em; padding:2px 8px; border-radius:10px; margin-bottom:8px; font-family: -apple-system, sans-serif; }
+  .card { background:#fff; border:1px solid #E0DCD3; border-radius:10px; padding:16px 18px; margin:14px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .cover-quote { font-style: italic; font-size:1.15em; border-left:4px solid #8a6d3b; padding:8px 14px; margin:10px 0; background:#FBF8F2; }
+  .overview li { margin-bottom:4px; }
+  button, a.btn { font-family: -apple-system, sans-serif; font-weight:600; border:none; border-radius:8px; padding:12px 20px; font-size:1em; cursor:pointer; text-decoration:none; display:inline-block; }
+  .btn-primary { background:#8a6d3b; color:#fff; }
+  .btn-primary:disabled { background:#c8bda3; cursor:not-allowed; }
+  .btn-secondary { background:#EFEDE8; color:#333; border:1px solid #D6D2C7; }
+  .btn-row { display:flex; gap:10px; justify-content:space-between; margin-top:18px; flex-wrap:wrap; }
+  .progress-bar { height:6px; background:#E5E1D8; border-radius:3px; overflow:hidden; margin: 10px 0 4px 0; }
+  .progress-fill { height:100%; background:#8a6d3b; transition: width 0.3s; }
+  .meta-row { display:flex; justify-content:space-between; align-items:center; font-family:-apple-system, sans-serif; font-size:0.8em; color:#777; margin-bottom:6px; }
+  .stopwatch { font-variant-numeric: tabular-nums; }
+  .qnum { font-weight:700; color:#8a6d3b; }
+  textarea { width:100%; border:1px solid #CFC9BB; border-radius:6px; padding:10px; font-family: Georgia, serif; font-size:1em; resize:vertical; margin-top:6px; }
+  .choice { display:block; padding:10px 12px; margin:6px 0; border:1px solid #D6D2C7; border-radius:8px; cursor:pointer; background:#fff; }
+  .choice:active { background:#F3F0E9; }
+  .choice.selected-correct { background:#E7F3E5; border-color:#7bab74; }
+  .choice.selected-wrong { background:#FBE9E7; border-color:#d98f85; }
+  .choice.reveal-correct { border-color:#7bab74; }
+  .feedback { font-family:-apple-system, sans-serif; font-size:0.9em; margin-top:6px; padding:8px 10px; border-radius:6px; }
+  .feedback.correct { background:#E7F3E5; color:#2e5c28; }
+  .feedback.wrong { background:#FBE9E7; color:#7a2c22; }
+  .rule-box { background:#F2EFE8; border-left:4px solid #8a6d3b; padding:8px 12px; margin:10px 0; font-size:0.95em; }
+  .warn-box { background:#FBF3E3; border:1px solid #E4C980; padding:10px 12px; margin:12px 0; border-radius:8px; text-align:center; }
+  table { border-collapse:collapse; width:100%; margin:8px 0; font-size:0.9em; }
+  table th, table td { border:1px solid #D6D2C7; padding:6px 8px; text-align:left; }
+  .status-banner { font-family:-apple-system, sans-serif; padding:10px 14px; border-radius:8px; margin:12px 0; font-size:0.9em; }
+  .status-ok { background:#E7F3E5; color:#2e5c28; }
+  .status-err { background:#FBE9E7; color:#7a2c22; }
+  .offline-pill { position:fixed; top:8px; right:8px; background:#333; color:#fff; font-family:-apple-system,sans-serif; font-size:0.7em; padding:3px 8px; border-radius:10px; opacity:0.85; }
+  .hidden { display:none; }
+</style>
+</head>
+<body>
+<div id="offline-pill" class="offline-pill hidden">Offline — still works</div>
+<div class="wrap" id="app">Loading…</div>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => { navigator.serviceWorker.register("sw.js").catch(() => {}); });
+}
+function updateOfflinePill() {
+  const el = document.getElementById("offline-pill");
+  if (el) el.classList.toggle("hidden", navigator.onLine);
+}
+window.addEventListener("online", updateOfflinePill);
+window.addEventListener("offline", updateOfflinePill);
+
+const params = new URLSearchParams(window.location.search);
+const CONTENT_NAME = params.get("content") || "";
+const CONTENT_URL = `content/${CONTENT_NAME}.json`;
+
+let CONTENT = null;
+let state = { step: -1, answers: {}, pomStart: null, pomElapsed: {}, overallStart: null, submitted: false };
+let STORAGE_KEY = "";
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) { const saved = JSON.parse(raw); state = Object.assign(state, saved); }
+  } catch(e) {}
+}
+function saveState() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
+}
+
+function renderBlock(pom, block) {
+  switch(block.type) {
+    case "rule": return `<div class="rule-box">${block.content}</div>`;
+    case "warn": return `<div class="warn-box">${block.content}</div>`;
+    case "text": case "html": case "speech": return `<div style="margin:8px 0;">${block.content}</div>`;
+    case "prompt": return `<div class="rule-box">${block.content}</div>`;
+    case "key_only": case "br20": case "lines": return "";
+    case "list": return `<ul>${(block.items||[]).map(i=>`<li>${i}</li>`).join("")}</ul>`;
+    case "question_mc": {
+      const key = `p${pom.number}_q${block.number}`;
+      const saved = state.answers[key];
+      const correctLetter = (block.answer.match(/^([A-D])\)/) || [])[1];
+      let html = `<div class="card"><div><span class="qnum">Q${block.number}.</span> ${block.question}</div>`;
+      block.choices.forEach(choice => {
+        const letter = (choice.match(/^([A-D])\)/) || [])[1];
+        let cls = "choice";
+        if (saved) {
+          if (letter === saved.choice && letter === correctLetter) cls += " selected-correct";
+          else if (letter === saved.choice && letter !== correctLetter) cls += " selected-wrong";
+          else if (letter === correctLetter) cls += " reveal-correct";
+        }
+        html += `<div class="${cls}" onclick="selectMC('${key}','${letter}','${correctLetter}')">${choice}</div>`;
+      });
+      if (saved) {
+        const isCorrect = saved.choice === correctLetter;
+        html += `<div class="feedback ${isCorrect ? 'correct' : 'wrong'}">${isCorrect ? '&#10003; Correct.' : '&#10007; Not quite.'} ${block.answer}</div>`;
+      }
+      html += `</div>`;
+      return html;
+    }
+    case "question_open": {
+      const key = `p${pom.number}_q${block.number}`;
+      const saved = state.answers[key] || "";
+      const rows = Math.max(2, Math.min(8, block.lines || 3));
+      return `<div class="card"><div><span class="qnum">Q${block.number}.</span> ${block.question}</div>
+        <textarea rows="${rows}" oninput="saveOpen('${key}', this.value)" placeholder="Type your answer here...">${escapeHtml(saved)}</textarea></div>`;
+    }
+    default: return "";
+  }
+}
+
+function escapeHtml(s) { return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+function selectMC(key, letter, correctLetter) {
+  state.answers[key] = { choice: letter, correct: correctLetter, isCorrect: letter === correctLetter };
+  saveState(); renderApp();
+}
+function saveOpen(key, value) { state.answers[key] = value; saveState(); }
+
+function fmtTime(sec) { const m = Math.floor(sec/60), s = sec%60; return `${m}:${String(s).padStart(2,'0')}`; }
+
+let tickInterval = null;
+function startTicker() {
+  if (tickInterval) clearInterval(tickInterval);
+  tickInterval = setInterval(() => {
+    const el = document.getElementById('stopwatch');
+    if (el && state.pomStart) {
+      const elapsed = Math.floor((Date.now() - state.pomStart)/1000) + (state.pomElapsed[state.step] || 0);
+      el.textContent = fmtTime(elapsed);
+    }
+  }, 1000);
+}
+
+function goToStep(n) {
+  if (state.step >= 0 && state.pomStart) {
+    const elapsed = Math.floor((Date.now() - state.pomStart)/1000);
+    state.pomElapsed[state.step] = (state.pomElapsed[state.step] || 0) + elapsed;
+  }
+  state.step = n; state.pomStart = Date.now();
+  saveState(); renderApp(); startTicker(); window.scrollTo(0,0);
+}
+function beginQuiz() { state.overallStart = state.overallStart || Date.now(); goToStep(0); }
+
+async function submitWork() {
+  if (state.pomStart) {
+    const elapsed = Math.floor((Date.now() - state.pomStart)/1000);
+    state.pomElapsed[state.step] = (state.pomElapsed[state.step] || 0) + elapsed;
+  }
+  const results = {
+    student: "Fatimah Widad Williams",
+    content_name: CONTENT_NAME,
+    meta: CONTENT.meta,
+    submitted_at: new Date().toISOString(),
+    total_elapsed_seconds: Object.values(state.pomElapsed).reduce((a,b)=>a+b,0),
+    pomodoros: CONTENT.pomodoros.map(pom => ({
+      number: pom.number, subject: pom.subject, elapsed_seconds: state.pomElapsed[pom.number] || 0,
+      questions: pom.content.filter(b => b.type === "question_mc" || b.type === "question_open").map(b => {
+        const key = `p${pom.number}_q${b.number}`;
+        const saved = state.answers[key];
+        if (b.type === "question_mc") {
+          return { number: b.number, type: "mc", question: b.question, student_choice: saved ? saved.choice : null, correct_choice: (b.answer.match(/^([A-D])\)/)||[])[1], is_correct: saved ? saved.isCorrect : null };
+        }
+        return { number: b.number, type: "open", question: b.question, student_answer: saved || "" };
+      })
+    }))
+  };
+  state.submitted = true; saveState();
+  const filename = `${CONTENT_NAME}_DIGITAL_RESULTS.json`;
+  const jsonStr = JSON.stringify(results, null, 2);
+  document.getElementById('submit-status').innerHTML = `<div class="status-banner status-err">Tap "Download My Results" below, then use the Share icon to save it into Box (Digital Packet Submissions folder), or AirDrop/email it home. If you're offline right now, the file still saves to this device — share it to Box next time you have a connection.</div>`;
+  window._pendingDownload = { filename, jsonStr };
+  renderApp();
+}
+function doDownload() {
+  const { filename, jsonStr } = window._pendingDownload || {};
+  if (!jsonStr) return;
+  const blob = new Blob([jsonStr], {type: "application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+}
+
+function renderApp() {
+  const app = document.getElementById('app');
+  const total = CONTENT.pomodoros.length;
+
+  if (state.step === -1) {
+    app.innerHTML = `
+      <span class="badge">FWW GED Digital Packet</span>
+      <h1>${CONTENT.meta.day_name}</h1>
+      <div class="meta-row"><span>${CONTENT.meta.date_display}</span><span>Week ${CONTENT.meta.week}</span></div>
+      <div class="card">
+        <h2>${CONTENT.cover.woman_name}</h2>
+        <div style="font-size:0.85em; color:#777; font-family:-apple-system,sans-serif;">${CONTENT.cover.woman_country}</div>
+        <p>${CONTENT.cover.woman_bio}</p>
+        <div class="cover-quote">&ldquo;${CONTENT.cover.quote}&rdquo;<br><span style="font-size:0.7em; font-style:normal; color:#777;">— ${CONTENT.cover.quote_source}</span></div>
+        <div style="font-family:-apple-system, sans-serif; font-size:0.9em;"><strong>Today's plan:</strong>
+          <ul class="overview">${CONTENT.cover.pomodoro_overview.map(o=>`<li>${o}</li>`).join("")}</ul>
+        </div>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-secondary" href="./index.html">&#8592; Back to Sessions</a>
+        <button class="btn-primary" onclick="beginQuiz()">Begin &#8594;</button>
+      </div>
+    `;
+    updateOfflinePill();
+    return;
+  }
+
+  const pom = CONTENT.pomodoros[state.step];
+  const doneCount = state.step;
+  app.innerHTML = `
+    <div class="meta-row"><span>Pomodoro ${state.step+1} of ${total}</span><span class="stopwatch" id="stopwatch">0:00</span></div>
+    <div class="progress-bar"><div class="progress-fill" style="width:${Math.round((doneCount/total)*100)}%"></div></div>
+    <h2>${pom.subject} <span style="font-weight:400; font-size:0.7em; color:#999;">(${pom.timer})</span></h2>
+    ${pom.content.map(b=>renderBlock(pom,b)).join("")}
+    <div id="submit-status"></div>
+    <div class="btn-row">
+      <button class="btn-secondary" onclick="goToStep(${state.step-1})" ${state.step===0?'disabled':''}>&#8592; Back</button>
+      ${state.step < total-1
+        ? `<button class="btn-primary" onclick="goToStep(${state.step+1})">Next &#8594;</button>`
+        : state.submitted
+          ? `<button class="btn-secondary" onclick="doDownload()">Download Backup Copy</button>`
+          : `<button class="btn-primary" onclick="submitWork()">Finish &amp; Submit &#10003;</button>`
+      }
+    </div>
+  `;
+  updateOfflinePill();
+}
+
+async function init() {
+  const app = document.getElementById('app');
+  if (!CONTENT_NAME) {
+    app.innerHTML = `<div class="card">No session specified. <a href="./index.html">Go back to the session list</a>.</div>`;
+    return;
+  }
+  STORAGE_KEY = "fww_pilot_" + CONTENT_NAME;
+  try {
+    const res = await fetch(CONTENT_URL);
+    if (!res.ok) throw new Error("not found");
+    CONTENT = await res.json();
+  } catch (e) {
+    app.innerHTML = `<div class="card">Couldn't load today's content (${CONTENT_NAME}). If you're offline and haven't opened this session before while online, connect once and reload. <a href="./index.html">Back to sessions</a>.</div>`;
+    return;
+  }
+  loadState();
+  renderApp();
+  if (state.step >= 0) startTicker();
+}
+init();
+</script>
+</body>
+</html>
