@@ -1,0 +1,135 @@
+{
+  "meta": {
+    "date_display": "Sunday, September 6, 2026 — Afternoon Session",
+    "week": 25,
+    "day_name": "Sunday PM — Week 25, Day 1",
+    "student_pdf": "Week25_Sun_Sep6_PM_Day1_FWW.pdf",
+    "key_pdf": "Week25_Sun_Sep6_PM_Day1_FWW_ANSWERKEY.pdf"
+  },
+  "cover": {
+    "woman_name": "Benjamin Banneker",
+    "woman_dates": "1731–1806",
+    "woman_country": "United States (Maryland)",
+    "woman_bio": "Benjamin Banneker was a free Black mathematician, astronomer, and surveyor — a rare status for a Black man in colonial Maryland, where most Black people were enslaved. Almost entirely self-taught, he built one of the first fully American-made striking clocks around age 22, carving every gear from wood after studying a borrowed pocket watch — the clock kept accurate time for over 50 years. He later taught himself advanced astronomy well enough to accurately predict a solar eclipse that contradicted the calculations of trained European astronomers, published his own annual almanacs, and in 1791 was appointed to assist Andrew Ellicott's survey team marking the original boundary of what became Washington, D.C. That same year, he wrote directly to Secretary of State Thomas Jefferson — who owned enslaved people — challenging him to live up to his own words about human equality. (One popular legend claims Banneker later reconstructed the entire city plan for Washington, D.C. from memory after the original architect, Pierre L'Enfant, left in a dispute and took his drawings with him. Most historians now consider this specific story exaggerated — the surviving records show Andrew Ellicott and his brothers did the plan reconstruction from Ellicott's own survey notes. Banneker's real, well-documented achievements — the clock, the almanacs, the eclipse prediction, the boundary survey work, and the Jefferson letter — don't need the legend to be remarkable.)",
+    "quote": "One universal Father hath given being to us all, and he hath not only made us all of one flesh, but that he hath also, without partiality, afforded us all the same sensations, and endowed us all with the same faculties.",
+    "quote_source": "Benjamin Banneker, letter to Thomas Jefferson, August 19, 1791",
+    "pomodoro_overview": [
+      "P0 &middot; Daily Check-In &middot; 5 min",
+      "P1 &middot; Essay Writing &middot; 25 min",
+      "P2 &middot; Mathematics — Percent Conversion, Multi-Step &middot; 25 min",
+      "P3 &middot; Lady Sings the Blues — Independent Reading &amp; Reflection &middot; 25 min",
+      "P4 &middot; GED Civics &amp; Science Practice &middot; 25 min",
+      "P5 &middot; Grammar A — Run-Ons &amp; Coordinating Conjunctions &middot; 25 min",
+      "P6 &middot; Japanese Proverb of the Day &middot; 25 min",
+      "P7 &middot; Grammar B — Fragments &amp; Subordinating Conjunctions &middot; 25 min",
+      "P8 &middot; Evening Mindfulness Micro-Journal &middot; 10 min"
+    ]
+  },
+  "pomodoros": [
+    {
+      "number": 0, "subject": "Daily Check-In", "timer": "5 minutes",
+      "content": [
+        { "type": "rule", "content": "<strong>Second session of the day — quick check-in, not graded.</strong>" },
+        { "type": "question_open", "number": 1, "question": "What time are you starting this afternoon session?", "lines": 1, "answer": "Student's own answer." },
+        { "type": "question_open", "number": 2, "question": "How are you feeling after this morning's review — energized, tired, something else?", "lines": 2, "answer": "Student's own answer." }
+      ]
+    },
+    {
+      "number": 1, "subject": "Essay Writing", "timer": "25 minutes",
+      "content": [
+        { "type": "rule", "content": "<strong>Focus:</strong> Full paragraphs, complete sentences." },
+        {
+          "type": "prompt",
+          "content": "<strong>Essay Prompt:</strong> In 1791, Benjamin Banneker — a free Black man with no political power — wrote a direct letter to Thomas Jefferson, one of the most powerful men in the country, calmly but firmly pointing out the hypocrisy of a man who wrote about human equality while enslaving people. Jefferson actually wrote back. Write about a time you (or someone you know, or someone from history) spoke up directly to someone with far more power or authority, because you believed they were wrong. What made it hard? What happened?"
+        },
+        { "type": "lines", "count": 24 }
+      ]
+    },
+    {
+      "number": 2, "subject": "Mathematics — Percent Conversion, Multi-Step", "timer": "25 minutes",
+      "content": [
+        { "type": "rule", "content": "<strong>Continued practice.</strong> percentage = (part &divide; whole) &times; 100." },
+        { "type": "question_open", "number": 1, "question": "Convert 16/40 to a percentage. Show all 4 steps.", "lines": 4, "answer": "16&divide;40=0.4&times;100=<strong>40%</strong>" },
+        { "type": "question_open", "number": 2, "question": "Banneker's handmade wooden clock ran accurately for over 50 years. If it needed adjustment in only 2 of those 50 years, what percentage of its lifespan needed adjustment? Show your working, rounded to the nearest whole percent.", "lines": 4, "answer": "2&divide;50=0.04&times;100=<strong>4%</strong>" },
+        { "type": "question_open", "number": 3, "question": "A GED practice test has 44 questions. A student answers 33 correctly. What percentage is that? Show all 4 steps.", "lines": 4, "answer": "33&divide;44=0.75&times;100=<strong>75%</strong>" },
+        { "type": "question_mc", "number": 4, "question": "Which fraction is equivalent to 40%?", "choices": ["A) 16/40", "B) 3/4", "C) 5/6", "D) 7/8"], "answer": "A) 16/40 (matches question 1)." },
+        { "type": "question_open", "number": 5, "question": "This is Day 1 of Week 25. If the week has 7 total sessions counting Saturday's quiz, what percentage of the week have you completed after today? Show your working.", "lines": 3, "answer": "1&divide;7=0.143&times;100 &asymp; <strong>14%</strong>" }
+      ]
+    },
+    {
+      "number": 3, "subject": "Lady Sings the Blues — Independent Reading &amp; Reflection", "timer": "25 minutes",
+      "content": [
+        { "type": "rule", "content": "<strong>Continue reading independently.</strong> Read the next section before answering below." },
+        { "type": "question_open", "number": 1, "question": "What page did you read up to today? Briefly (2-3 sentences), what happens in the section you read?", "lines": 5, "answer": "Student's own summary, referencing actual pages read." },
+        { "type": "question_open", "number": 2, "question": "Banneker taught himself advanced mathematics and astronomy with almost no formal schooling. Has Billie Holiday's story shown her teaching herself something difficult, without formal training? Give a specific example.", "lines": 5, "answer": "Answers will vary based on actual reading — check for a genuine, specific connection." },
+        { "type": "question_open", "number": 3, "question": "Write one new prediction for what happens next in the book.", "lines": 3, "answer": "Answers will vary — any reasonable prediction is acceptable." }
+      ]
+    },
+    {
+      "number": 4, "subject": "GED Civics &amp; Science Practice", "timer": "25 minutes",
+      "content": [
+        { "type": "rule", "content": "<strong>Instructions:</strong> Answer every part of each question. Show all steps." },
+        { "type": "question_mc", "number": 1, "question": "Benjamin Banneker was appointed to assist which survey effort in 1791?", "choices": ["A) Mapping the Louisiana Purchase", "B) Surveying the original boundary of what became Washington, D.C.", "C) Charting the Oregon Trail", "D) Mapping the Erie Canal route"], "answer": "B) Surveying the original boundary of what became Washington, D.C." },
+        { "type": "question_mc", "number": 2, "question": "Banneker's ability to accurately predict a solar eclipse that contradicted trained European astronomers' calculations is best described as evidence of:", "choices": ["A) Luck, since he had no real training", "B) Rigorous self-taught scientific skill that outperformed credentialed experts", "C) A common and unremarkable achievement for the time", "D) A claim historians have fully disproven"], "answer": "B) Rigorous self-taught scientific skill that outperformed credentialed experts." },
+        { "type": "question_open", "number": 3, "question": "The passage mentions that the popular story of Banneker reconstructing Washington, D.C.'s city plan &ldquo;from memory&rdquo; is considered exaggerated by most historians, even though his other achievements are well documented. Why is it important to be able to tell the difference between a popular legend and a well-documented historical fact, even when both are about the same real, remarkable person?", "lines": 6, "answer": "Sample answer: Believing an exaggerated or false detail can actually weaken the credibility of a person's REAL, verifiable achievements once the myth is debunked — giving critics an easy way to dismiss the whole story. Being precise about what is documented versus legend protects the truth and models good historical/critical thinking, which matters just as much when the story is inspiring as when it isn't." },
+        { "type": "question_open", "number": 4, "question": "Banneker's 1791 letter to Thomas Jefferson is a real historical document that still exists today. Explain why a primary source like an original letter is valuable evidence for historians, compared to a secondhand story passed down over generations.", "lines": 5, "answer": "Sample answer: A primary source like an original letter was created at the actual time of the event by someone directly involved, so it isn't filtered through years of retelling, exaggeration, or fading memory the way an oral legend can be. Historians can verify a primary source's authenticity and read the exact original words, rather than relying on someone's later description of what supposedly happened." },
+        { "type": "question_open", "number": 5, "question": "Compare Benjamin Banneker to ONE woman you reviewed this morning. What is one thing they had in common, even from different eras, countries, or fields?", "lines": 5, "answer": "Answers will vary — accept any well-reasoned comparison (e.g., self-taught mastery, challenging power directly, working within/against a system not built for them)." }
+      ]
+    },
+    {
+      "number": 5, "subject": "Grammar A — Run-Ons &amp; Coordinating Conjunctions", "timer": "25 minutes",
+      "content": [
+        { "type": "rule", "content": "<strong>Review:</strong> Comma + FANBOYS (<strong>F</strong>or, <strong>A</strong>nd, <strong>N</strong>or, <strong>B</strong>ut, <strong>O</strong>r, <strong>Y</strong>et, <strong>S</strong>o) fixes a run-on or comma splice." },
+        { "type": "question_open", "number": 1, "question": "Fix this run-on: 'Banneker had almost no formal schooling he taught himself advanced astronomy anyway.'", "lines": 3, "answer": "Sample fix: 'Banneker had almost no formal schooling, yet he taught himself advanced astronomy anyway.'" },
+        { "type": "question_open", "number": 2, "question": "Fix this comma splice: 'Jefferson held great power, Banneker wrote to him without fear.'", "lines": 3, "answer": "Sample fix: 'Jefferson held great power, but Banneker wrote to him without fear.'" },
+        { "type": "question_open", "number": 3, "question": "Fix this run-on: 'You could research more about Banneker's letter now you could move on to the next section.'", "lines": 3, "answer": "Sample fix: 'You could research more about Banneker's letter now, or you could move on to the next section.'" },
+        { "type": "question_open", "number": 4, "question": "Find ONE sentence in your essay (Pomodoro 1). Copy it below exactly as you wrote it.", "lines": 3, "answer": "Student's own copied sentence." },
+        { "type": "question_open", "number": 5, "question": "Diagnose the sentence you copied: is it a run-on, a comma splice, or correct? Explain how you know.", "lines": 3, "answer": "Answers will vary — check for accurate self-diagnosis." },
+        { "type": "question_open", "number": 6, "question": "If it needed a fix, rewrite it correctly below. If it was already correct, explain what makes it correct.", "lines": 3, "answer": "Answers will vary — check for a correct fix or an accurate correctness explanation." },
+        { "type": "question_open", "number": 7, "question": "Write your own correct sentence using 'nor.' (Remember: 'nor' needs inverted word order.)", "lines": 2, "answer": "Answers will vary — check for correct inverted structure, e.g., 'He had no formal training, nor did he have access to advanced instruments.'" },
+        { "type": "question_open", "number": 8, "question": "In 1-2 sentences: is this run-on habit easier or harder to catch than it was a few weeks ago?", "lines": 3, "answer": "Student's own reflective answer." }
+      ]
+    },
+    {
+      "number": 6, "subject": "Japanese Proverb of the Day", "timer": "25 minutes",
+      "content": [
+        { "type": "rule", "content": "<strong>Today's proverb, paired with Benjamin Banneker's quote and story.</strong>" },
+        {
+          "type": "html",
+          "content": "<div style='background:#F8F8F8; border:1px solid #CCC; padding:8px 12px; margin:4px 0; font-size:9pt; line-height:1.6; text-align:center;'><strong style='font-size:14pt;'>&#30707;&#12398;&#19978;&#12395;&#12418;&#19977;&#24180;</strong><br><em>Ishi no ue nimo san-nen</em><br>&ldquo;Three years sitting on a stone [will eventually feel warm].&rdquo;</div>"
+        },
+        { "type": "question_open", "number": 1, "question": "In your own words, what does 'three years sitting on a stone' mean?", "lines": 3, "answer": "Sample answer: Even something as cold and unyielding as stone will eventually warm up if you sit on it long enough — meaning patience and persistence, even through long stretches of difficulty with no visible progress, eventually pay off." },
+        { "type": "question_open", "number": 2, "question": "Banneker spent years teaching himself mathematics and astronomy with no formal schooling, no teacher, and mostly borrowed books and instruments. How does today's proverb connect to that kind of long, quiet self-teaching?", "lines": 5, "answer": "Sample answer: Self-teaching a difficult subject with no guidance often shows no visible reward for a long time — much like sitting on a cold stone. The proverb suggests that the discomfort and slowness of that process are not signs of failure, but simply the necessary conditions before the 'warmth' (mastery, results) arrives." },
+        {
+          "type": "html",
+          "content": "<p style='margin:6px 0 3px 0;'><strong>Vocabulary breakdown:</strong></p><table><tr><th>Japanese</th><th>Romaji</th><th>Meaning</th></tr><tr><td>石</td><td>ishi</td><td>stone</td></tr><tr><td>三年</td><td>san-nen</td><td>three years</td></tr></table>"
+        },
+        { "type": "question_open", "number": 3, "question": "Using at least one of the vocabulary words above, write one English sentence about patience paying off over a long time.", "lines": 3, "answer": "Answers will vary — check for correct use of the concept." }
+      ]
+    },
+    {
+      "number": 7, "subject": "Grammar B — Fragments &amp; Subordinating Conjunctions", "timer": "25 minutes",
+      "content": [
+        { "type": "rule", "content": "<strong>Review:</strong> A dependent clause (although, because, since, if, when, while, unless, until, after, before, though) needs a complete sentence attached." },
+        { "type": "question_open", "number": 1, "question": "Fix this fragment using 'although': 'Although he had never seen the inside of a working clock before building his own.'", "lines": 3, "answer": "Sample fix: 'Although he had never seen the inside of a working clock before building his own, Banneker built one that ran accurately for 50 years.'" },
+        { "type": "question_open", "number": 2, "question": "Fix this fragment using 'because': 'Because Jefferson held enslaved people despite writing about equality.'", "lines": 3, "answer": "Sample fix: 'Because Jefferson held enslaved people despite writing about equality, Banneker directly confronted that contradiction in his letter.'" },
+        { "type": "question_open", "number": 3, "question": "Find ONE sentence in your GED Civics answer (question 3 or 4). Copy it below exactly as you wrote it.", "lines": 3, "answer": "Student's own copied sentence." },
+        { "type": "question_open", "number": 4, "question": "Diagnose the sentence you copied: is it a fragment, or a complete sentence? Explain how you know.", "lines": 4, "answer": "Answers will vary — check for accurate self-diagnosis using the subject/verb/complete-thought test." },
+        { "type": "question_open", "number": 5, "question": "If it needed a fix, rewrite it correctly below. If it was already correct, explain what makes it complete.", "lines": 3, "answer": "Answers will vary — check for a correct fix or an accurate correctness explanation." },
+        { "type": "question_open", "number": 6, "question": "Write your own correct sentence using 'since' to start a dependent clause.", "lines": 2, "answer": "Answers will vary — check for a correctly punctuated dependent clause + complete sentence." },
+        { "type": "question_open", "number": 7, "question": "Write your own correct sentence using 'until' to start a dependent clause.", "lines": 2, "answer": "Answers will vary — check for a correctly punctuated dependent clause + complete sentence." },
+        { "type": "question_open", "number": 8, "question": "In 1-2 sentences: is this fragment habit easier or harder to catch than it was a few weeks ago?", "lines": 3, "answer": "Student's own reflective answer." }
+      ]
+    },
+    {
+      "number": 8, "subject": "Evening Mindfulness Micro-Journal", "timer": "10 minutes",
+      "content": [
+        { "type": "rule", "content": "<strong>Wind-down for the day.</strong> No right or wrong answers here — just notice honestly." },
+        { "type": "question_open", "number": 1, "question": "One sensation I notice right now:", "lines": 2, "answer": "Student's own answer." },
+        { "type": "question_open", "number": 2, "question": "One thought I can let pass:", "lines": 2, "answer": "Student's own answer." },
+        { "type": "question_open", "number": 3, "question": "One thing that feels steady today:", "lines": 2, "answer": "Student's own answer." },
+        { "type": "warn", "content": "&#127775; Day 1 of Week 25 complete — and a full review this morning too. Benjamin Banneker, writing to Thomas Jefferson in 1791: &ldquo;We are all of the same family and stand in the same relation to Him.&rdquo;" }
+      ]
+    }
+  ]
+}
