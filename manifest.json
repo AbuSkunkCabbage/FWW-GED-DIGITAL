@@ -1,0 +1,8 @@
+{
+  "name": "FWW GED Digital Packet",
+  "short_name": "FWW GED",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#F7F6F3",
+  "theme_color": "#8a6d3b"
+}
